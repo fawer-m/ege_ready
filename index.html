@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Подготовка к ЕГЭ</title>
+  <meta name="description" content="Конспекты и файлы по математике, русскому языку, информатике и физике. Всё сохраняется в браузере.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Marck+Script&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <p class="brand">Подготовка к ЕГЭ</p>
+      <nav id="subjects" class="subjects" aria-label="Предметы"></nav>
+    </aside>
+
+    <main class="main">
+      <div id="fatal" class="empty" role="alert" hidden>
+        <h2>Не получается сохранять данные</h2>
+        <p>Браузер не разрешает этому сайту хранить конспекты и файлы. Выключите приватный режим или откройте сайт в другом браузере.</p>
+      </div>
+
+      <div id="workspace">
+        <header class="subject-head">
+          <h1 id="subject-title" class="subject-title"></h1>
+          <div class="views" role="tablist" aria-label="Раздел предмета">
+            <button type="button" role="tab" id="tab-notes" class="view-tab" aria-controls="panel-notes">Конспекты <span id="count-notes" class="count"></span></button>
+            <button type="button" role="tab" id="tab-files" class="view-tab" aria-controls="panel-files">Файлы <span id="count-files" class="count"></span></button>
+          </div>
+        </header>
+
+        <section id="panel-notes" class="notes" role="tabpanel" aria-labelledby="tab-notes">
+          <div class="note-side">
+            <button type="button" id="new-note" class="btn btn-primary">Новый конспект</button>
+            <ul id="note-list" class="note-list"></ul>
+          </div>
+
+          <div>
+            <div id="editor" hidden>
+              <div class="editor-bar">
+                <input id="note-title" class="note-title" type="text" maxlength="120" placeholder="Название конспекта" aria-label="Название конспекта" autocomplete="off">
+                <span id="save-status" class="save-status"></span>
+                <button type="button" id="delete-note" class="btn btn-quiet btn-danger">Удалить</button>
+              </div>
+              <div class="sheet">
+                <textarea id="note-body" class="note-body" placeholder="Пишите здесь. Конспект сохраняется сам." aria-label="Текст конспекта" spellcheck="true"></textarea>
+              </div>
+            </div>
+
+            <div id="notes-empty" class="empty" hidden>
+              <h2>Здесь пока нет конспектов</h2>
+              <p>Создайте первый конспект. Он сохранится в браузере и будет на месте, когда вы закроете сайт и вернётесь.</p>
+              <button type="button" id="new-note-empty" class="btn btn-primary">Новый конспект</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="panel-files" role="tabpanel" aria-labelledby="tab-files" hidden>
+          <label id="drop" class="drop">
+            <input id="file-input" class="visually-hidden" type="file" multiple>
+            <strong>Добавить файлы</strong>
+            <span>Перетащите файлы сюда или нажмите, чтобы выбрать</span>
+          </label>
+          <ul id="file-list" class="file-list"></ul>
+          <p id="files-empty" class="files-empty">Файлов пока нет. Добавьте PDF, фото страницы или таблицу, и они останутся здесь.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <p id="storage" class="storage" hidden></p>
+      <button type="button" id="export" class="btn btn-quiet">Сохранить копию</button>
+      <label class="btn btn-quiet">Загрузить копию<input id="import" class="visually-hidden" type="file" accept="application/json,.json"></label>
+      <p class="hint">Данные хранятся только в этом браузере. Сохраняйте копию, если чистите данные сайтов.</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript>Для работы сайта нужен включённый JavaScript.</noscript>
+  <script src="app.js"></script>
+</body>
+</html>
